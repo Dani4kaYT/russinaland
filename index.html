@@ -1,34 +1,43 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RussianLand | Minecraft Сервер</title>
+    <title>RUSSIANLAND | Сервер Minecraft</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap');
         
         :root {
-            --void: #0a0a0a;
-            --neon: #00f5ff;
-            --purple: #9d4edd;
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00f0ff;
+            --neon-green: #39ff14;
+            --dark: #0a0a0a;
+            --deep: #120c1f;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: var(--void);
+            background: var(--dark);
             color: #e0e0e0;
-            font-family: 'Roboto Mono', monospace;
+            font-family: 'VT323', monospace;
             overflow-x: hidden;
-            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(255,0,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
         
-        .stars {
+        .scanline {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent;
+            background: linear-gradient(transparent, rgba(255,255,255,0.05), transparent);
             pointer-events: none;
+            animation: scan 4s linear infinite;
             z-index: -1;
         }
+        
+        @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
         
         header {
             height: 100vh;
@@ -37,86 +46,91 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.95)), url('https://source.unsplash.com/random/1920x1080/?space,nebula') center/cover;
+            background: linear-gradient(rgba(10,10,20,0.9), rgba(10,10,30,0.95)), url('https://source.unsplash.com/random/1920x1080/?cyberpunk,city') center/cover;
+            border-bottom: 4px solid var(--neon-pink);
         }
         
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 5.5rem;
-            color: var(--neon);
-            text-shadow: 0 0 40px var(--neon);
-            margin-bottom: 1rem;
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-pink), 0 0 60px var(--neon-green);
+            letter-spacing: 8px;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 var(--neon-pink), -2px 0 var(--neon-cyan); }
+            20% { text-shadow: -2px 0 var(--neon-pink), 2px 0 var(--neon-cyan); }
         }
         
         .tagline {
-            font-size: 1.8rem;
-            color: var(--purple);
-            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            color: var(--neon-green);
+            margin: 20px 0;
+            text-shadow: 0 0 20px var(--neon-green);
         }
         
         .ip {
-            background: rgba(0,0,0,0.7);
-            padding: 15px 40px;
-            border: 2px solid var(--neon);
-            font-size: 1.5rem;
+            background: rgba(0,0,0,0.8);
+            padding: 18px 50px;
+            border: 3px solid var(--neon-pink);
+            font-size: 1.8rem;
             display: inline-block;
-            margin: 20px 0;
+            margin: 30px 0;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            box-shadow: 0 0 30px var(--neon-pink);
         }
         
         .ip:hover {
-            background: var(--neon);
+            background: var(--neon-pink);
             color: black;
-            transform: scale(1.05);
+            box-shadow: 0 0 50px var(--neon-pink);
+            transform: scale(1.08);
         }
         
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10,10,10,0.95);
+            top: 0; width: 100%;
+            background: rgba(10,10,20,0.95);
             padding: 15px 0;
             z-index: 100;
-            border-bottom: 1px solid var(--purple);
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+            border-bottom: 2px solid var(--neon-cyan);
         }
         
         nav a {
-            color: #ccc;
+            color: var(--neon-cyan);
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-size: 1.3rem;
+            margin: 0 25px;
+            transition: all 0.3s;
         }
         
-        nav a:hover { color: var(--neon); }
+        nav a:hover { color: var(--neon-pink); text-shadow: 0 0 15px var(--neon-pink); }
         
         section {
             padding: 100px 10%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            color: var(--neon);
+            font-size: 3.5rem;
+            color: var(--neon-pink);
             text-align: center;
             margin-bottom: 60px;
-            text-shadow: 0 0 20px var(--neon);
+            text-shadow: 0 0 30px var(--neon-pink);
         }
         
-        .rules-container {
-            background: rgba(20,20,40,0.6);
+        .container {
+            background: rgba(18,12,31,0.85);
             padding: 40px;
-            border-radius: 15px;
-            border: 1px solid var(--purple);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(0,240,255,0.3);
         }
         
         .rules-section {
@@ -124,169 +138,151 @@
         }
         
         .rules-section h3 {
-            color: var(--neon);
-            margin: 30px 0 15px;
-            font-size: 1.6rem;
+            color: var(--neon-green);
+            margin: 25px 0 15px;
+            font-size: 1.8rem;
         }
         
-        ul {
-            list-style: none;
-        }
-        
+        ul { list-style: none; }
         li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(157,78,221,0.15);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,0,255,0.1);
         }
         
         .btn {
             display: inline-block;
             background: transparent;
-            color: var(--neon);
-            border: 2px solid var(--neon);
-            padding: 15px 40px;
-            margin: 20px;
+            color: var(--neon-green);
+            border: 3px solid var(--neon-green);
+            padding: 18px 50px;
+            font-size: 1.4rem;
             text-decoration: none;
-            font-weight: bold;
+            margin: 20px;
             transition: all 0.4s;
+            box-shadow: 0 0 25px var(--neon-green);
         }
         
         .btn:hover {
-            background: var(--neon);
+            background: var(--neon-green);
             color: black;
-            box-shadow: 0 0 30px var(--neon);
+            box-shadow: 0 0 50px var(--neon-green);
         }
         
         footer {
             text-align: center;
             padding: 40px;
             background: #050505;
-            border-top: 1px solid var(--purple);
+            border-top: 2px solid var(--neon-pink);
+            color: #888;
         }
     </style>
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#info">Информация</a></li>
-            <li><a href="#rules">Правила</a></li>
-            <li><a href="#discord">Discord</a></li>
+        <ul style="list-style:none; display:flex; justify-content:center;">
+            <li><a href="#home">ГЛАВНАЯ</a></li>
+            <li><a href="#info">ИНФО</a></li>
+            <li><a href="#rules">ПРАВИЛА</a></li>
+            <li><a href="#discord">DISCORD</a></li>
         </ul>
     </nav>
 
     <header id="home">
-        <div class="stars"></div>
+        <div class="scanline"></div>
         <div>
-            <div class="logo">RussianLand</div>
-            <div class="tagline">Сервер RussianLand</div>
+            <div class="logo">RUSSIANLAND</div>
+            <div class="tagline">Сервер Minecraft</div>
             <div class="ip" onclick="copyIP()">d35.gamely.pro:20036</div>
             <br>
-            <a href="#info" class="btn">Узнать больше</a>
+            <a href="#info" class="btn">ЗАЙТИ В СЕТЬ</a>
         </div>
     </header>
 
     <section id="info">
-        <h2>О СЕРВЕРЕ</h2>
-        <div class="rules-container">
-            <p><strong>Версия:</strong> 1.21+</p>
-            <p><strong>Режимы:</strong> Survival</p>
+        <h2>ДОБРО ПОЖАЛОВАТЬ В СЕТЬ</h2>
+        <div class="container">
+            <p><strong>IP:</strong> d35.gamely.pro:20036</p>
+            <p><strong>Версия:</strong> 1.21.x</p>
+            <p><strong>Режимы:</strong> Vanila • Survival</p>
+            <p>Русский сервер</p>
         </div>
     </section>
 
-    <section id="rules" style="background: #0a0a0a;">
-        <h2>ПРАВИЛА СЕРВЕРА</h2>
-        <div class="rules-container">
+    <section id="rules" style="background: var(--deep);">
+        <h2>ПРАВИЛА СЕТИ</h2>
+        <div class="container">
 
             <div class="rules-section">
                 <h3>Общие правила</h3>
                 <ul>
-                    <li>1.1 Любой, играющий на проекте, автоматически соглашается с этим сводом правил и обязуется выполнять их.</li>
-                    <li>1.2 Администраторы игрового проекта имеют полное право заблокировать Ваш аккаунт за нарушение того или иного пункта правил.</li>
-                    <li>1.3 Администраторы игрового проекта имеют полное право аннулировать/заблокировать Ваш аккаунт без объяснения причин.</li>
-                    <li>1.4 Покупка товара осуществляется через заключение публичного договора-оферты, и регламентируется его пунктами.</li>
+                    <li>1.1 Любой, играющий на проекте, автоматически соглашается с этим сводом правил.</li>
+                    <li>1.2 Администраторы имеют полное право заблокировать аккаунт за нарушение правил.</li>
+                    <li>1.3 Администрация может заблокировать аккаунт без объяснения причин.</li>
+                    <li>1.4 Покупка товаров осуществляется через публичный договор-оферту.</li>
                     <li>1.5 Администрация не несёт ответственности за неправильно переведённые средства.</li>
-                    <li>1.6 Администрация не обязана возвращать Вам то, что Вы утратили в следствие какой-либо технической/игровой ситуации.</li>
-                    <li>1.7 Данный свод правил может быть изменён в любой момент, и администрация оставляет за собой право не оповещать игроков об изменениях.</li>
-                    <li>1.8 Незнание правил не освобождает вас от ответственности. Взлом вашего аккаунта не является оправданием, если вас обвиняют в нарушении правил.</li>
-                    <li>1.9 Возврат средств происходит согласно пункту 8.4 публичного договора-оферты.</li>
-                    <li>1.10 На обжалование бана даётся 3 дня (со дня получения бана). Мут или предупреждение можно обжаловать до его конца.</li>
-                    <li>1.11 Админы не понимают шутки, рофлы, юмор и т.д.</li>
+                    <li>1.6 Администрация не обязана возвращать утраченное в результате технических/игровых ситуаций.</li>
+                    <li>1.7 Правила могут быть изменены в любой момент без уведомления.</li>
+                    <li>1.8 Незнание правил не освобождает от ответственности.</li>
+                    <li>1.10 На обжалование бана даётся 3 дня.</li>
+                    <li>1.11 Админы не понимают шутки, рофлы и юмор.</li>
                 </ul>
             </div>
 
             <div class="rules-section">
                 <h3>Запрещено</h3>
                 <ul>
-                    <li>2.1 Строительство нецензурных слов и символов, а также фигур, несущих порнографический характер. (2.1.1 — то же касается скинов)</li>
-                    <li>2.2 Выдавать себя за члена администрации/модератора проекта.</li>
-                    <li>2.3 Устанавливать объекты, сильно нагружающие сервер (ограничения по генераторам, афк-фермам и твинкам — см. полный текст в игре).</li>
-                    <li>2.4 Использование и/или хранение стороннего ПО (чит-клиенты, xray, макросы и т.д.). Подробный список в правилах.</li>
-                    <li>2.4.2 Использование уязвимостей/багов сервера.</li>
-                    <li>2.5 Любая передача/продажа аккаунта.</li>
+                    <li>2.1 Нецензурные постройки и порнографические фигуры (включая скины).</li>
+                    <li>2.2 Выдавать себя за администрацию.</li>
+                    <li>2.3 Сильная нагрузка на сервер (ограничения по генераторам, афк-фермам, твинкам).</li>
+                    <li>2.4 Использование читов, xray, макросов и стороннего ПО.</li>
+                    <li>2.5 Продажа/передача аккаунтов.</li>
                     <li>2.6 Торговля за реальные деньги.</li>
-                    <li>2.7–2.16 (гриферство, обход банов, оскорбительные ники, абузы и т.д.)</li>
+                    <li>2.11 Гриферство.</li>
+                    <li>2.12 Обход банов.</li>
+                    <li>2.13 Оскорбительные ники.</li>
                 </ul>
             </div>
 
             <div class="rules-section">
                 <h3>Чат и общение</h3>
                 <ul>
-                    <li>3.1–3.14 Полный запрет на оскорбления, флуд, мат, капс, рекламу, политические и религиозные темы и т.д.</li>
+                    <li>3.1 Оскорбления игроков.</li>
+                    <li>3.2 Флуд, капс, мат.</li>
+                    <li>3.5 Реклама других серверов и ресурсов.</li>
+                    <li>3.7 Оскорбление проекта и администрации.</li>
+                    <li>3.13 Политические, религиозные темы, призывы к суициду и т.д.</li>
                 </ul>
             </div>
 
             <div class="rules-section">
-                <h3>В мини-играх запрещено</h3>
+                <h3>Мини-игры и прочее</h3>
                 <ul>
-                    <li>4.1 Тим в соло-режимах, буст и т.д.</li>
-                    <li>4.2 Запуск ботов/твинков (с исключениями).</li>
+                    <li>4.1 Тим в соло-режимах, буст.</li>
+                    <li>4.2 Запуск ботов и лишних твинков.</li>
                 </ul>
             </div>
 
-            <div class="rules-section">
-                <h3>Правила для модераторов / хелперов</h3>
-                <ul>
-                    <li>5.1–5.7 (требования к доказательствам, запрет на злоупотребление и т.д.)</li>
-                </ul>
-            </div>
-
-            <p style="margin-top: 40px; color: #aaa; font-size: 0.95rem;">
-                Полный и актуальный список правил находится в игре. Администрация оставляет за собой право трактовать правила по ситуации.
+            <p style="margin-top: 30px; color: #aaa;">
+                Полный список правил находится в игре. Администрация оставляет за собой право трактовать правила по ситуации.
             </p>
         </div>
     </section>
 
     <section id="discord">
-        <h2>Присоединяйся к сообществу</h2>
+        <h2>ПРИСОЕДИНЯЙСЯ В DISCORD</h2>
         <div style="text-align: center;">
-            <a href="https://discord.gg/ttSCegVmpp" class="btn" target="_blank">Discord VOID</a>
+            <a href="https://discord.gg/ttSCegVmpp" class="btn" target="_blank">DISCORD RUSSIANLAND</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 RussianLand • Все права защищены</p>
+        <p>&copy; 2026 RUSSIANLAND • Все права защищены</p>
     </footer>
 
     <script>
         function copyIP() {
-            navigator.clipboard.writeText("d35.gamely.pro:20036");
-            alert("IP скопирован: d35.gamely.pro:20036 ✨");
-        }
-        
-        // Звёзды на фоне
-        const starsContainer = document.querySelector('.stars');
-        for (let i = 0; i < 300; i++) {
-            const star = document.createElement('div');
-            star.style.position = 'absolute';
-            star.style.width = Math.random() * 2.5 + 'px';
-            star.style.height = star.style.width;
-            star.style.background = 'white';
-            star.style.borderRadius = '50%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.opacity = Math.random() * 0.7 + 0.3;
-            star.style.animation = `twinkle ${Math.random() * 4 + 3}s infinite`;
-            starsContainer.appendChild(star);
+            navigator.clipboard.writeText("play.russianland.fun");
+            alert("IP скопирован: play.russianland.fun");
         }
     </script>
 </body>
