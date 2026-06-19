@@ -15,57 +15,75 @@
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--dark); color: #e0e0e0; font-family: 'VT323', monospace; overflow-x: hidden; }
+        body { 
+            background: var(--dark); 
+            color: #e0e0e0; 
+            font-family: 'VT323', monospace; 
+            overflow-x: hidden; 
+        }
 
         /* Preloader */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #0a0a0a; display: flex; align-items: center; justify-content: center;
-            z-index: 9999; transition: opacity 2s;
+            z-index: 9999; transition: opacity 2s ease;
         }
         .r-logo {
-            font-family: 'Orbitron', sans-serif; font-size: 16rem; font-weight: 900;
-            color: var(--neon-pink); text-shadow: 0 0 80px var(--neon-pink), 0 0 140px var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 16rem; 
+            font-weight: 900;
+            color: var(--neon-pink); 
+            text-shadow: 0 0 80px var(--neon-pink), 0 0 140px var(--neon-cyan);
             animation: rPulse 2s infinite alternate;
         }
-        @keyframes rPulse { from { transform: scale(0.8); } to { transform: scale(1.08); } }
-
-        /* Видео */
-        #bg-video {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            opacity: 0.35; pointer-events: none;
+        @keyframes rPulse { 
+            from { transform: scale(0.85); } 
+            to { transform: scale(1.08); } 
         }
 
         section { padding: 120px 10%; max-width: 1200px; margin: 0 auto; }
-        h2 { font-family: 'Orbitron', sans-serif; font-size: 3.8rem; color: var(--neon-pink); text-align: center; margin-bottom: 60px; text-shadow: 0 0 30px var(--neon-pink); }
+        h2 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 3.8rem; 
+            color: var(--neon-pink); 
+            text-align: center; 
+            margin-bottom: 60px; 
+            text-shadow: 0 0 30px var(--neon-pink); 
+        }
         h3 { color: var(--neon-green); margin: 45px 0 25px; font-size: 2.1rem; }
 
         ul { list-style: none; }
         li { padding: 10px 0; border-bottom: 1px solid rgba(255,0,255,0.15); line-height: 1.45; }
 
         .ip {
-            background: rgba(0,0,0,0.85); padding: 25px 70px; border: 4px solid var(--neon-pink);
-            font-size: 2rem; display: inline-block; cursor: pointer; box-shadow: 0 0 50px var(--neon-pink);
-            margin: 30px 0;
+            background: rgba(0,0,0,0.85); 
+            padding: 25px 70px; 
+            border: 4px solid var(--neon-pink);
+            font-size: 2rem; 
+            display: inline-block; 
+            cursor: pointer; 
+            box-shadow: 0 0 50px var(--neon-pink);
+            margin: 20px;
         }
         .btn {
-            color: var(--neon-green); border: 3px solid var(--neon-green); padding: 18px 50px;
-            font-size: 1.6rem; text-decoration: none; display: inline-block; margin: 20px; transition: 0.4s;
+            color: var(--neon-green); 
+            border: 3px solid var(--neon-green); 
+            padding: 18px 50px;
+            font-size: 1.6rem; 
+            text-decoration: none; 
+            display: inline-block; 
+            margin: 20px; 
+            transition: 0.4s;
         }
         .btn:hover { background: var(--neon-green); color: black; }
     </style>
 </head>
 <body>
 
-    <!-- 1. Логотип сервера (Preloader) -->
+    <!-- Preloader -->
     <div id="preloader">
         <div class="r-logo">R</div>
     </div>
-
-    <!-- Видео (играет при скролле) -->
-    <iframe id="bg-video" 
-            src="https://www.youtube.com/embed/L_iKnEWSN7w?autoplay=1&mute=1&loop=1&playlist=L_iKnEWSN7w&controls=0&modestbranding=1&rel=0" 
-            frameborder="0" allow="autoplay"></iframe>
 
     <nav style="position:fixed; top:0; width:100%; background:rgba(10,10,20,0.95); padding:15px 0; z-index:100; text-align:center; border-bottom:2px solid var(--neon-cyan);">
         <a href="#features" style="color:var(--neon-cyan); margin:0 25px;">ОСОБЕННОСТИ</a>
@@ -74,31 +92,32 @@
         <a href="#discord" style="color:var(--neon-cyan); margin:0 25px;">DISCORD</a>
     </nav>
 
-    <!-- 2. Шапка -->
-    <header id="home" style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; z-index:2;">
+    <!-- Шапка -->
+    <header id="home" style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;">
         <div>
             <div style="font-family:'Orbitron',sans-serif; font-size:7rem; color:var(--neon-cyan);">RUSSIANLAND</div>
-            <div style="font-size:2.5rem; color:var(--neon-green); margin-top:20px;">VANILA SURVIVAL</div>
+            <div style="font-size:2.4rem; color:var(--neon-green); margin-top:20px;">Сервер выживание</div>
+            <div style="margin-top:30px; font-size:1.4rem;">Версия: 1.21.x</div>
         </div>
     </header>
 
-    <!-- 3. Особенности сервера -->
+    <!-- Особенности -->
     <section id="features">
         <h2>ОСОБЕННОСТИ СЕРВЕРА</h2>
         <p style="text-align:center; font-size:1.6rem; max-width:900px; margin:0 auto;">
-            Русский сервер где ты можешь спокойна поиграть
+            Русский сервер где ты можешь спокойно поиграть
         </p>
     </section>
 
-    <!-- 4. Правила (полные) -->
+    <!-- Правила -->
     <section id="rules" style="background:#0f0a1f;">
-        <h2>ПРАВИЛА СЕРВЕРА</h2>
+        <h2>ПРАВИЛА СЕТИ</h2>
         <div style="max-width:1100px; margin:0 auto;">
-
+            <!-- Общие правила, Запрещено, Чат и т.д. (оставил как в предыдущей версии) -->
             <h3>Общие правила</h3>
             <ul>
                 <li>1.1 Любой, играющий на проекте, автоматически соглашается с этим сводом правил и обязуется выполнять их.</li>
-                <li>1.2 Администраторы имеют полное право заблокировать Ваш аккаунт за нарушение правил.</li>
+                <li>1.2 Администраторы имеют полное право заблокировать аккаунт за нарушение правил.</li>
                 <li>1.3 Администраторы имеют полное право заблокировать аккаунт без объяснения причин.</li>
                 <li>1.4 Покупка товара осуществляется через публичный договор-оферту.</li>
                 <li>1.5 Администрация не несёт ответственности за неправильно переведённые средства.</li>
@@ -121,7 +140,6 @@
                 <li>2.11 Гриферство.</li>
                 <li>2.12 Обход банов.</li>
                 <li>2.13 Оскорбительные ники.</li>
-                <li>2.14–2.16 Взлом аккаунтов, абузы, тим с читерами и т.д.</li>
             </ul>
 
             <h3>Чат и общение</h3>
@@ -130,7 +148,7 @@
                 <li>3.2 Флуд, капс, мат.</li>
                 <li>3.5 Реклама других серверов.</li>
                 <li>3.7 Оскорбление проекта и администрации.</li>
-                <li>3.13 Политические, религиозные темы, призывы к суициду и т.д.</li>
+                <li>3.13 Политические, религиозные темы и т.д.</li>
             </ul>
 
             <h3>В мини-играх запрещено</h3>
@@ -144,24 +162,24 @@
                 <li>5.1–5.7 Обязательное наличие доказательств, запрет на злоупотребление.</li>
             </ul>
 
-            <p style="margin-top:60px; color:#aaa; text-align:center;">
-                Полный и актуальный список правил находится в игре. Администрация оставляет за собой право трактовать правила по ситуации.
+            <p style="margin-top:60px; color:#aaa; text-align:center; font-size:1.2rem;">
+                Полный список правил находится в игре. Администрация оставляет за собой право трактовать правила по ситуации.
             </p>
         </div>
     </section>
 
-    <!-- 5. IP и подключение -->
+    <!-- Подключение + Донат -->
     <section id="connect" style="text-align:center; background:var(--dark);">
         <h2>ПОДКЛЮЧИТЬСЯ К СЕРВЕРУ</h2>
         <div class="ip" onclick="copyIP()">d35.gamely.pro:20036</div>
         <br><br>
-        <a href="#" class="btn">СКАЧАТЬ LEGACY LAUNCHER</a>
+        <a href="https://russianland.trademc.org/" target="_blank" class="btn">КУПИТЬ ДОНАТ</a>
     </section>
 
-    <!-- 6. Discord -->
+    <!-- Discord -->
     <section id="discord" style="text-align:center;">
         <h2>ПРИСОЕДИНЯЙСЯ К НАМ</h2>
-        <a href="https://discord.gg/ttSCegVmpp" class="btn" target="_blank">DISCORD RUSSIANLAND</a>
+        <a href="https://discord.gg/ttSCegVmpp" style="color:var(--neon-green); font-size:2rem; text-decoration:none;" target="_blank">DISCORD RUSSIANLAND</a>
     </section>
 
     <footer style="text-align:center; padding:50px; background:#050505;">
@@ -176,18 +194,6 @@
                 setTimeout(() => document.getElementById('preloader').style.display = 'none', 2000);
             }, 7000);
         });
-
-        // Видео только при скролле колёсика
-        const video = document.getElementById('bg-video');
-        let timeout;
-
-        window.addEventListener('wheel', () => {
-            video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-            }, 1500);
-        }, { passive: true });
 
         function copyIP() {
             navigator.clipboard.writeText("d35.gamely.pro:20036");
