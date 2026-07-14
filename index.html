@@ -6,22 +6,21 @@
     <title>Russianland | Сервер Minecraft</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap');
-        
+       
         :root {
             --neon-pink: #ff00ff;
             --neon-cyan: #00f0ff;
             --neon-green: #39ff14;
             --dark: #0a0a0a;
         }
-        
+       
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: var(--dark); 
-            color: #e0e0e0; 
-            font-family: 'VT323', monospace; 
-            overflow-x: hidden; 
+        body {
+            background: var(--dark);
+            color: #e0e0e0;
+            font-family: 'VT323', monospace;
+            overflow-x: hidden;
         }
-
         /* Preloader */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -29,57 +28,53 @@
             z-index: 9999; transition: opacity 2s ease;
         }
         .r-logo {
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 16rem; 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16rem;
             font-weight: 900;
-            color: var(--neon-pink); 
+            color: var(--neon-pink);
             text-shadow: 0 0 80px var(--neon-pink), 0 0 140px var(--neon-cyan);
             animation: rPulse 2s infinite alternate;
         }
-        @keyframes rPulse { 
-            from { transform: scale(0.85); } 
-            to { transform: scale(1.08); } 
+        @keyframes rPulse {
+            from { transform: scale(0.85); }
+            to { transform: scale(1.08); }
         }
-
         section { padding: 120px 10%; max-width: 1200px; margin: 0 auto; }
-        h2 { 
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 3.8rem; 
-            color: var(--neon-pink); 
-            text-align: center; 
-            margin-bottom: 60px; 
-            text-shadow: 0 0 30px var(--neon-pink); 
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8rem;
+            color: var(--neon-pink);
+            text-align: center;
+            margin-bottom: 60px;
+            text-shadow: 0 0 30px var(--neon-pink);
         }
         h3 { color: var(--neon-green); margin: 45px 0 25px; font-size: 2.1rem; }
-
         ul { list-style: none; }
         li { padding: 10px 0; border-bottom: 1px solid rgba(255,0,255,0.15); line-height: 1.45; }
-
         .ip {
-            background: rgba(0,0,0,0.85); 
-            padding: 25px 70px; 
+            background: rgba(0,0,0,0.85);
+            padding: 25px 70px;
             border: 4px solid var(--neon-pink);
-            font-size: 2rem; 
-            display: inline-block; 
-            cursor: pointer; 
+            font-size: 2rem;
+            display: inline-block;
+            cursor: pointer;
             box-shadow: 0 0 50px var(--neon-pink);
             margin: 20px;
         }
         .btn {
-            color: var(--neon-green); 
-            border: 3px solid var(--neon-green); 
+            color: var(--neon-green);
+            border: 3px solid var(--neon-green);
             padding: 18px 50px;
-            font-size: 1.6rem; 
-            text-decoration: none; 
-            display: inline-block; 
-            margin: 20px; 
+            font-size: 1.6rem;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px;
             transition: 0.4s;
         }
         .btn:hover { background: var(--neon-green); color: black; }
     </style>
 </head>
 <body>
-
     <!-- Preloader -->
     <div id="preloader">
         <div class="r-logo">R</div>
@@ -89,6 +84,7 @@
         <a href="#features" style="color:var(--neon-cyan); margin:0 25px;">ОСОБЕННОСТИ</a>
         <a href="#rules" style="color:var(--neon-cyan); margin:0 25px;">ПРАВИЛА</a>
         <a href="#connect" style="color:var(--neon-cyan); margin:0 25px;">ПОДКЛЮЧЕНИЕ</a>
+        <a href="#admin" style="color:var(--neon-cyan); margin:0 25px;">АДМИНИСТРАЦИЯ</a>
         <a href="#discord" style="color:var(--neon-cyan); margin:0 25px;">DISCORD</a>
     </nav>
 
@@ -113,7 +109,6 @@
     <section id="rules" style="background:#0f0a1f;">
         <h2>ПРАВИЛА СЕТИ</h2>
         <div style="max-width:1100px; margin:0 auto;">
-            <!-- Общие правила, Запрещено, Чат и т.д. (оставил как в предыдущей версии) -->
             <h3>Общие правила</h3>
             <ul>
                 <li>1.1 Любой, играющий на проекте, автоматически соглашается с этим сводом правил и обязуется выполнять их.</li>
@@ -128,7 +123,6 @@
                 <li>1.10 На обжалование бана даётся 3 дня.</li>
                 <li>1.11 Админы не понимают шутки, рофлы, юмор и т.д.</li>
             </ul>
-
             <h3>Запрещено</h3>
             <ul>
                 <li>2.1 Нецензурные постройки, символы и порнографические фигуры (включая скины).</li>
@@ -141,7 +135,6 @@
                 <li>2.12 Обход банов.</li>
                 <li>2.13 Оскорбительные ники.</li>
             </ul>
-
             <h3>Чат и общение</h3>
             <ul>
                 <li>3.1 Оскорбления игроков.</li>
@@ -150,18 +143,15 @@
                 <li>3.7 Оскорбление проекта и администрации.</li>
                 <li>3.13 Политические, религиозные темы и т.д.</li>
             </ul>
-
             <h3>В мини-играх запрещено</h3>
             <ul>
                 <li>4.1 Тим в соло-режимах, буст.</li>
                 <li>4.2 Запуск ботов/твинков.</li>
             </ul>
-
             <h3>Правила для модераторов / хелперов</h3>
             <ul>
                 <li>5.1–5.7 Обязательное наличие доказательств, запрет на злоупотребление.</li>
             </ul>
-
             <p style="margin-top:60px; color:#aaa; text-align:center; font-size:1.2rem;">
                 Полный список правил находится в игре. Администрация оставляет за собой право трактовать правила по ситуации.
             </p>
@@ -174,6 +164,16 @@
         <div class="ip" onclick="copyIP()">d35.gamely.pro:20036</div>
         <br><br>
         <a href="https://russianland.trademc.org/" target="_blank" class="btn">КУПИТЬ ДОНАТ</a>
+    </section>
+
+    <!-- Администрация -->
+    <section id="admin" style="background:#0f0a1f;">
+        <h2>АДМИНИСТРАЦИЯ</h2>
+        <div style="max-width:700px; margin:0 auto; background:#1a1a1f; padding:40px; border-radius:8px; border:2px solid var(--neon-cyan);">
+            <h3>Регистрация на админку</h3>
+            <input type="text" id="nickname" placeholder="Твой ник в Minecraft" style="width:100%; padding:15px; background:#111; border:1px solid var(--neon-cyan); color:white; font-size:1.2rem; margin-bottom:20px;">
+            <button onclick="sendApplication()" class="btn">ПОДАТЬ ЗАЯВКУ</button>
+        </div>
     </section>
 
     <!-- Discord -->
@@ -198,6 +198,28 @@
         function copyIP() {
             navigator.clipboard.writeText("d35.gamely.pro:20036");
             alert("IP скопирован: d35.gamely.pro:20036");
+        }
+
+        // Отправка заявки по webhook
+        async function sendApplication() {
+            const nick = document.getElementById('nickname').value.trim();
+            if (!nick) return alert("Введи ник!");
+
+            const webhookUrl = "https://discord.com/api/webhooks/1526525325721337968/cnLHOL2K5DlAB2vX_v110mE4vloR5l77gpKzSLvXRs1NX2Nyq7G076_mjpcLn2Xjib2m; // ← Замени на свой webhook
+
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        content: `**🔥 НОВАЯ ЗАЯВКА НА АДМИНКУ!**\n\n**Ник:** ${nick}\n**Время:** ${new Date().toLocaleString('ru-RU')}\n\n@here`,
+                        username: "RussianLand Bot"
+                    })
+                });
+                alert(`Заявка от ${nick} успешно отправлена!`);
+            } catch (e) {
+                alert("Ошибка отправки. Проверь webhook URL.");
+            }
         }
     </script>
 </body>
