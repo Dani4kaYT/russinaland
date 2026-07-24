@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Russianland | Сервер Minecraft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap');
-       
         :root {
             --neon-pink: #ff00ff;
             --neon-cyan: #00f0ff;
             --neon-green: #39ff14;
             --dark: #0a0a0a;
         }
-       
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: var(--dark);
@@ -21,59 +20,127 @@
             font-family: 'VT323', monospace;
             overflow-x: hidden;
         }
+
+        html { scroll-behavior: smooth; }
+
         /* Preloader */
         #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #0a0a0a; display: flex; align-items: center; justify-content: center;
-            z-index: 9999; transition: opacity 2s ease;
+            position: fixed; inset: 0;
+            background: #0a0a0a;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 1.5s ease;
         }
         .r-logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 16rem;
             font-weight: 900;
             color: var(--neon-pink);
-            text-shadow: 0 0 80px var(--neon-pink), 0 0 140px var(--neon-cyan);
+            text-shadow: 0 0 80px var(--neon-pink), 0 0 160px var(--neon-cyan);
             animation: rPulse 2s infinite alternate;
         }
-        @keyframes rPulse {
-            from { transform: scale(0.85); }
-            to { transform: scale(1.08); }
+        @keyframes rPulse { from { transform: scale(0.9); } to { transform: scale(1.12); } }
+
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(10,10,20,0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--neon-cyan);
+            text-align: center;
         }
-        section { padding: 120px 10%; max-width: 1200px; margin: 0 auto; }
+        nav a {
+            color: var(--neon-cyan);
+            margin: 0 22px;
+            text-decoration: none;
+            font-size: 1.35rem;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
+
+        header {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #0a0a0a, #1a0033);
+        }
+        .title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(5rem, 14vw, 8.5rem);
+            color: var(--neon-cyan);
+            text-shadow: 0 0 80px var(--neon-cyan), 0 0 160px var(--neon-pink);
+        }
+        .subtitle { font-size: 2.4rem; color: var(--neon-green); margin-top: 20px; }
+
+        section { padding: 130px 6%; max-width: 1200px; margin: 0 auto; }
         h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.8rem;
+            font-size: 3.6rem;
             color: var(--neon-pink);
             text-align: center;
-            margin-bottom: 60px;
-            text-shadow: 0 0 30px var(--neon-pink);
+            margin-bottom: 70px;
+            text-shadow: 0 0 40px var(--neon-pink);
         }
-        h3 { color: var(--neon-green); margin: 45px 0 25px; font-size: 2.1rem; }
+        h3 { color: var(--neon-green); margin: 50px 0 25px; font-size: 2.2rem; }
+
         ul { list-style: none; }
-        li { padding: 10px 0; border-bottom: 1px solid rgba(255,0,255,0.15); line-height: 1.45; }
+        li { padding: 12px 0; border-bottom: 1px solid rgba(255,0,255,0.2); line-height: 1.5; }
+
+        /* IP */
+        .ip-container { text-align: center; margin: 40px 0; }
         .ip {
             background: rgba(0,0,0,0.85);
-            padding: 25px 70px;
-            border: 4px solid var(--neon-pink);
-            font-size: 2rem;
+            padding: 35px 90px;
+            border: 5px solid var(--neon-pink);
+            font-size: 2.6rem;
             display: inline-block;
             cursor: pointer;
-            box-shadow: 0 0 50px var(--neon-pink);
-            margin: 20px;
-            transition: all 0.3s;
+            box-shadow: 0 0 70px var(--neon-pink);
+            transition: all 0.4s ease;
+            position: relative;
         }
-        .ip:hover { transform: scale(1.05); }
+        .ip:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 120px var(--neon-pink);
+        }
+        .copy-feedback {
+            position: absolute;
+            top: -65px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-green);
+            color: #000;
+            padding: 12px 30px;
+            font-size: 1.5rem;
+            border-radius: 4px;
+            opacity: 0;
+            transition: all 0.4s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .ip.copied .copy-feedback { opacity: 1; top: -75px; }
+
         .btn {
             color: var(--neon-green);
-            border: 3px solid var(--neon-green);
-            padding: 18px 50px;
-            font-size: 1.6rem;
+            border: 4px solid var(--neon-green);
+            padding: 22px 65px;
+            font-size: 1.9rem;
             text-decoration: none;
             display: inline-block;
             margin: 20px;
-            transition: 0.4s;
+            transition: all 0.4s;
         }
-        .btn:hover { background: var(--neon-green); color: black; }
+        .btn:hover {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 60px var(--neon-green);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            background: #050505;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -82,26 +149,26 @@
         <div class="r-logo">R</div>
     </div>
 
-    <nav style="position:fixed; top:0; width:100%; background:rgba(10,10,20,0.95); padding:15px 0; z-index:100; text-align:center; border-bottom:2px solid var(--neon-cyan);">
-        <a href="#features" style="color:var(--neon-cyan); margin:0 25px;">ОСОБЕННОСТИ</a>
-        <a href="#rules" style="color:var(--neon-cyan); margin:0 25px;">ПРАВИЛА</a>
-        <a href="#connect" style="color:var(--neon-cyan); margin:0 25px;">ПОДКЛЮЧЕНИЕ</a>
-        <a href="#discord" style="color:var(--neon-cyan); margin:0 25px;">DISCORD</a>
+    <nav>
+        <a href="#features">ОСОБЕННОСТИ</a>
+        <a href="#rules">ПРАВИЛА</a>
+        <a href="#connect">ПОДКЛЮЧЕНИЕ</a>
+        <a href="#discord">DISCORD</a>
     </nav>
 
     <!-- Шапка -->
-    <header id="home" style="height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;">
+    <header id="home">
         <div>
-            <div style="font-family:'Orbitron',sans-serif; font-size:7rem; color:var(--neon-cyan);">RUSSIANLAND</div>
-            <div style="font-size:2.4rem; color:var(--neon-green); margin-top:20px;">Сервер выживание</div>
-            <div style="margin-top:30px; font-size:1.4rem;">Версия: 1.21.x</div>
+            <div class="title">RUSSIANLAND</div>
+            <div class="subtitle">Сервер выживания</div>
+            <div style="margin-top:30px; font-size:1.6rem; color:#aaa;">Версия: 1.21.x</div>
         </div>
     </header>
 
     <!-- Особенности -->
     <section id="features">
         <h2>ОСОБЕННОСТИ СЕРВЕРА</h2>
-        <p style="text-align:center; font-size:1.6rem; max-width:900px; margin:0 auto;">
+        <p style="text-align:center; font-size:1.8rem; max-width:900px; margin:0 auto;">
             Русский сервер где ты можешь спокойно поиграть
         </p>
     </section>
@@ -110,7 +177,6 @@
     <section id="rules" style="background:#0f0a1f;">
         <h2>ПРАВИЛА СЕТИ</h2>
         <div style="max-width:1100px; margin:0 auto;">
-
             <h3>Общие правила</h3>
             <ul>
                 <li>1.1 Любой, играющий на проекте, автоматически соглашается с этим сводом правил и обязуется выполнять их.</li>
@@ -159,27 +225,34 @@
                 <li>5.1–5.7 Обязательное наличие доказательств, запрет на злоупотребление.</li>
             </ul>
 
-            <p style="margin-top:60px; color:#aaa; text-align:center; font-size:1.2rem;">
+            <p style="margin-top:60px; color:#aaa; text-align:center; font-size:1.3rem;">
                 Полный список правил находится в игре. Администрация оставляет за собой право трактовать правила по ситуации.
             </p>
         </div>
     </section>
 
-    <!-- Подключение + Донат -->
-    <section id="connect" style="text-align:center; background:var(--dark);">
+    <!-- Подключение -->
+    <section id="connect" style="text-align:center;">
         <h2>ПОДКЛЮЧИТЬСЯ К СЕРВЕРУ</h2>
-        <div class="ip" onclick="copyIP()">russianland.fun</div>
-        <br><br>
+        <div class="ip-container">
+            <div class="ip" onclick="copyIP()">
+                russianland.fun
+                <div class="copy-feedback">СКОПИРОВАНО!</div>
+            </div>
+        </div>
+        <br>
         <a href="https://russianland.trademc.org/" target="_blank" class="btn">КУПИТЬ ДОНАТ</a>
     </section>
 
     <!-- Discord -->
     <section id="discord" style="text-align:center;">
         <h2>ПРИСОЕДИНЯЙСЯ К НАМ</h2>
-        <a href="https://discord.gg/ttSCegVmpp" style="color:var(--neon-green); font-size:2rem; text-decoration:none;" target="_blank">DISCORD RUSSIANLAND</a>
+        <a href="https://discord.gg/ttSCegVmpp" style="color:var(--neon-green); font-size:2.6rem; text-decoration:none;" target="_blank">
+            DISCORD RUSSIANLAND
+        </a>
     </section>
 
-    <footer style="text-align:center; padding:50px; background:#050505;">
+    <footer>
         <p>&copy; 2026 RUSSIANLAND • Все права защищены</p>
     </footer>
 
@@ -189,13 +262,17 @@
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 1500);
-            }, 5000);
+                setTimeout(() => preloader.remove(), 1600);
+            }, 1600);
         });
 
+        // Copy IP
         function copyIP() {
+            const ipElement = document.querySelector('.ip');
             navigator.clipboard.writeText("russianland.fun");
-            alert("IP скопирован: russianland.fun");
+            
+            ipElement.classList.add('copied');
+            setTimeout(() => ipElement.classList.remove('copied'), 2200);
         }
     </script>
 </body>
